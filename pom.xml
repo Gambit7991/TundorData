@@ -18,9 +18,15 @@
     <properties>
         <joda-time-version>2.12.5</joda-time-version>
         <java.version>17</java.version>
+        <project.version>1.0</project.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.domain</groupId>
+            <artifactId>tundor-domain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jdbc</artifactId>

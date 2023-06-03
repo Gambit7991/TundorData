@@ -1,15 +1,16 @@
 package org.tundor.data.models.user_roles;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.tundor.data.models.UserInfo;
 
 @Entity
 @Table(name = "tutor", schema = "account")
 @Getter
 @Setter
-@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Tutor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -18,8 +19,7 @@ public class Tutor {
     @Basic
     @Column(name = "students")
     private Integer students;
-    @Basic
-    @Column(name = "user_info_id")
-    private String userInfoId;
-
+    @OneToOne
+    @JoinColumn(name = "user_info_id")
+    private UserInfo userInfo;
 }

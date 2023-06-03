@@ -1,4 +1,4 @@
-package org.tundor.data.repositories;
+package org.tundor.data.data_interacting.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

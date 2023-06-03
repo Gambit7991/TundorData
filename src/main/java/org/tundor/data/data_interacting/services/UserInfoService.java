@@ -1,10 +1,10 @@
-package org.tundor.data.services;
+package org.tundor.data.data_interacting.services;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tundor.data.models.UserInfo;
-import org.tundor.data.repositories.UserInfoRep;
+import org.tundor.data.data_interacting.repositories.UserInfoRep;
 
 import java.util.List;
 

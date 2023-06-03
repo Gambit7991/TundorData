@@ -1,9 +1,9 @@
-package org.tundor.data.controllers;
+package org.tundor.data.data_interacting.controllers;
 
 
 import org.springframework.web.bind.annotation.*;
 import org.tundor.data.models.UserInfo;
-import org.tundor.data.services.UserInfoService;
+import org.tundor.data.data_interacting.services.UserInfoService;
 
 import java.util.List;
 
@@ -22,13 +22,13 @@ public class UserInfoController {
     }
 
     @GetMapping("/{id}")
-    public UserInfo getProductById(@PathVariable Long id) {
+    public UserInfo getUserInfoById(@PathVariable Long id) {
         return userInfoService.getUserById(id);
     }
 
     @PostMapping
-    public UserInfo createProduct(@RequestBody UserInfo product) {
-        return userInfoService.saveUser(product);
+    public UserInfo createUserInfo(@RequestBody UserInfo userInfo) {
+        return userInfoService.saveUser(userInfo);
     }
 
     @DeleteMapping("/{id}")
