@@ -3,6 +3,8 @@ package org.tundor.data.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.tundor.data.models.account_info.LoginInfo;
+import org.tundor.data.models.account_info.address.Address;
 import org.tundor.data.models.utils.Gender;
 import org.tundor.data.models.utils.UserType;
 
@@ -15,14 +17,15 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @EqualsAndHashCode
+@Builder
 public class UserInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private int id;
-    @Basic
-    @Column(name = "login_info_id")
-    private int loginInfoId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "login_info")
+    private LoginInfo loginInfo;
     @Basic
     @Column(name = "create_time")
     private Timestamp createTime;
@@ -45,9 +48,9 @@ public class UserInfo {
     @Basic
     @Column(name = "main_picture")
     private String mainPicture;
-    @Basic
-    @Column(name = "address_id")
-    private int addressId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address")
+    private Address address;
     @Basic
     @Column(name = "album_id")
     private Integer albumId;

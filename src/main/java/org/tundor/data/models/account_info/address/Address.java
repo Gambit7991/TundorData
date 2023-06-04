@@ -5,6 +5,7 @@ import lombok.*;
 
 @Entity
 @Table(name = "address", schema = "account")
+@Builder
 @AllArgsConstructor @NoArgsConstructor
 @Getter
 @Setter
@@ -12,7 +13,7 @@ import lombok.*;
 public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "ID")
+    @Column(name = "address_id")
     private int id;
     @Basic
     @Column(name = "apt_num")

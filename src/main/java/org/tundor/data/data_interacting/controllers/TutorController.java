@@ -6,6 +6,7 @@ import org.tundor.data.models.user_roles.Tutor;
 import org.tundor.data.data_interacting.services.TutorService;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/Tutor")
@@ -20,16 +21,18 @@ public class TutorController {
         return tutorService.getAllUsers();
     }
 
-    public Tutor getUserById(int id){
+    public Tutor getUserById(UUID id){
         return tutorService.getTutorById(id);
     }
 
-    public Tutor saveUser(Tutor tutor){
+    public Tutor addUser(Tutor tutor){
         return tutorService.saveUser(tutor);
     }
 
-    public void deleteUser(int id){
+    public void deleteUser(UUID id){
         tutorService.deleteUser(id);
     }
+
+
 
 }

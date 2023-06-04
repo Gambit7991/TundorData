@@ -13,7 +13,7 @@ import lombok.*;
 public class LoginInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "ID")
+    @Column(name = "login_id")
     private int id;
     @Basic
     @Column(name = "email")

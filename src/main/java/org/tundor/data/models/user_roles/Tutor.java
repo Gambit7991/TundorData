@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.tundor.data.models.UserInfo;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "tutor", schema = "account")
 @Getter
@@ -12,10 +14,10 @@ import org.tundor.data.models.UserInfo;
 @AllArgsConstructor
 @Builder
 public class Tutor {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     @Column(name = "id")
-    private int id;
+    private UUID id;
     @Basic
     @Column(name = "students")
     private Integer students;
