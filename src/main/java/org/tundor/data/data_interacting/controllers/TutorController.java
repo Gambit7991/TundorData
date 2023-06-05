@@ -1,9 +1,8 @@
 package org.tundor.data.data_interacting.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.tundor.data.models.user_roles.Tutor;
+import org.springframework.web.bind.annotation.*;
 import org.tundor.data.data_interacting.services.TutorService;
+import org.tundor.data.models.user_roles.Tutor;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,22 +16,25 @@ public class TutorController {
         this.tutorService = tutorService;
     }
 
+    @GetMapping
     public List<Tutor> getAllUsers() {
-        return tutorService.getAllUsers();
+        return tutorService.getAllTutors();
     }
 
-    public Tutor getUserById(UUID id){
+    @GetMapping("/{id}")
+    public Tutor getUserById(@PathVariable UUID id) {
         return tutorService.getTutorById(id);
     }
 
-    public Tutor addUser(Tutor tutor){
+    @PostMapping
+    public Tutor addUser(@RequestBody Tutor tutor) {
         return tutorService.saveUser(tutor);
     }
 
-    public void deleteUser(UUID id){
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable UUID id) {
         tutorService.deleteUser(id);
     }
-
 
 
 }

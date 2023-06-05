@@ -7,5 +7,5 @@ import org.tundor.data.models.user_roles.Tutor;
 import java.util.UUID;
 
 @Repository
-public interface TutorRep extends JpaRepository<Tutor, UUID> {
+public interface TutorRepository extends JpaRepository<Tutor, UUID> {
 }

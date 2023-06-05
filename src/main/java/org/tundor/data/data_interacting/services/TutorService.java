@@ -1,9 +1,8 @@
 package org.tundor.data.data_interacting.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.tundor.data.data_interacting.repositories.TutorRepository;
 import org.tundor.data.models.user_roles.Tutor;
-import org.tundor.data.data_interacting.repositories.TutorRep;
 
 import java.util.List;
 import java.util.UUID;
@@ -11,26 +10,26 @@ import java.util.UUID;
 @Service
 public class TutorService {
 
-    private final TutorRep tutorRep;
+    private final TutorRepository tutorRepository;
 
-    @Autowired
-    public TutorService(TutorRep tutorRep) {
-        this.tutorRep = tutorRep;
+//    @Autowired
+    public TutorService(TutorRepository tutorRepository) {
+        this.tutorRepository = tutorRepository;
     }
 
-    public List<Tutor> getAllUsers() {
-        return tutorRep.findAll();
+    public List<Tutor> getAllTutors() {
+        return tutorRepository.findAll();
     }
 
     public Tutor getTutorById(UUID id) {
-        return tutorRep.findById(id).orElse(null);
+        return tutorRepository.findById(id).orElse(null);
     }
 
     public Tutor saveUser(Tutor tutor) {
-        return tutorRep.save(tutor);
+        return tutorRepository.save(tutor);
     }
 
     public void deleteUser(UUID id) {
-        tutorRep.deleteById(id);
+        tutorRepository.deleteById(id);
     }
 }
