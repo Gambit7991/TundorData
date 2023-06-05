@@ -11,13 +11,10 @@ import lombok.*;
 @Setter
 @EqualsAndHashCode
 public class Country {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
-    private int id;
-    @Basic
     @Column(name = "country_id")
-    private Integer countryId;
+    private int id;
     @Basic
     @Column(name = "country_name")
     private String countryName;

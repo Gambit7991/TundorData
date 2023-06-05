@@ -28,7 +28,8 @@ public class Address {
     @Column(name = "city")
     private String city;
     @Basic
-    @Column(name = "country_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "fk_country")
     private Integer countryId;
     @Basic
     @Column(name = "postal_code")

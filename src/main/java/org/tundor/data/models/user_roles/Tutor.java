@@ -13,6 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode
 public class Tutor {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
@@ -21,7 +22,7 @@ public class Tutor {
     @Basic
     @Column(name = "students")
     private Integer students;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_info_id")
     private UserInfo userInfo;
 }
