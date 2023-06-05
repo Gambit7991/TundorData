@@ -22,12 +22,12 @@ public class TutorController {
     }
 
     @GetMapping("/{id}")
-    public Tutor getUserById(@PathVariable UUID id) {
+    public Tutor findById(@PathVariable UUID id) {
         return tutorService.getTutorById(id);
     }
 
     @PostMapping
-    public Tutor addUser(@RequestBody Tutor tutor) {
+    public Tutor save(@RequestBody Tutor tutor) {
         return tutorService.saveUser(tutor);
     }
 

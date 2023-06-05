@@ -4,30 +4,33 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.tundor.data.data_interacting.repositories.TutorRepository;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.tundor.data.controllers.TestTutorController;
+import org.tundor.data.data_interacting.controllers.TutorController;
 import org.tundor.data.factories.UserFactory;
 import org.tundor.data.models.user_roles.Tutor;
-import org.tundor.data.queries.TutorQueries;
-
-import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class TutorTests implements AutoCloseable{
-    @Mock
-    private TutorRepository tutorRep;
     private UserFactory userFactory;
-    private TutorQueries tutorQueries;
     private Tutor tutor;
+    @Mock
+    private TutorController controller;
+    @InjectMocks
+    private TestTutorController tutorController;
 
     @BeforeEach
     public void setup() {
         MockitoAnnotations.openMocks(this);
         userFactory = new UserFactory();
-        tutorQueries = new TutorQueries(tutorRep);
         tutor = userFactory.createTutor();
+        when(tutorController.save(tutor).findById(tutor.getId())).thenReturn(tutor);
     }
 
     @AfterEach
@@ -36,13 +39,12 @@ class TutorTests implements AutoCloseable{
 
     @Test
     void createTutorPositive() {
-        when(tutorQueries.createTutor(tutor).readTutor(tutor.getId())).thenReturn(Optional.of(tutor));
-        Assertions.assertEquals(tutorQueries.createTutor(tutor).readTutor(tutor.getId()).orElse(null),
+        Assertions.assertEquals(tutorController.save(tutor).findById(tutor.getId()),
                 tutor);
     }
 
     @Override
-    public void close() throws Exception {
+    public void close()  {
 
     }
 
