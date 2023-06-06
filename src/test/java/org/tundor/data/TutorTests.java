@@ -10,9 +10,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.tundor.data.controllers.TutorQueries;
-import org.tundor.data.data_interacting.services.TutorService;
+import org.tundor.data.data_interacting.controllers.TutorController;
 import org.tundor.data.factories.UserFactory;
 import org.tundor.data.models.user_roles.Tutor;
+
+import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 
@@ -21,7 +23,7 @@ class TutorTests {
     private final UserFactory userFactory = new UserFactory();
     private Tutor tutor;
     @Mock
-    private TutorService service;
+    private TutorController controller;
     @InjectMocks
     private TutorQueries tutorQueries;
 
@@ -38,7 +40,7 @@ class TutorTests {
     @Test
     void createTutor() {
         Assertions.assertEquals(tutor,
-                getSaveLogic().save(tutor).findById(tutor.getId()));
+                getSaveLogic().save(tutor).findById(tutor.getId()).orElse(null));
     }
 
     @Test
@@ -50,7 +52,7 @@ class TutorTests {
     }
 
     private TutorQueries getSaveLogic() {
-        when(tutorQueries.save(tutor).findById(tutor.getId())).thenReturn(tutor);
+        when(tutorQueries.save(tutor).findById(tutor.getId())).thenReturn(Optional.of(tutor));
         return tutorQueries;
     }
 
