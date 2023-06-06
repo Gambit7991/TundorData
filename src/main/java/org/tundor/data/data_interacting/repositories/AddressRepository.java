@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import org.tundor.data.models.account_info.address.Address;
 
 @Repository
-public interface AddressRep extends JpaRepository<Address, Integer> {
+public interface AddressRepository extends JpaRepository<Address, Long> {
 }

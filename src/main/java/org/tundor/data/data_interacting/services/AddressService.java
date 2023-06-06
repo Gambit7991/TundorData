@@ -1,28 +1,32 @@
 package org.tundor.data.data_interacting.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.tundor.data.data_interacting.controllers.AddressController;
+import org.tundor.data.data_interacting.repositories.AddressRepository;
 import org.tundor.data.models.account_info.address.Address;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AddressService {
-    private final AddressController controller;
+    private final AddressRepository repository;
 
-    @Autowired
-    public AddressService(AddressController controller) {
-        this.controller = controller;
+    public AddressService(AddressRepository repository) {
+        this.repository = repository;
     }
 
-    public Address addAddress(Address address){
-        return controller.addAddress(address);
+    public List<Address> findAll(){
+        return repository.findAll();
     }
 
-    public Address getAddressById(int id){
-        return controller.getAddressById(id);
+    public Optional<Address> findById(Long id){
+        return repository.findById(id);
     }
 
-    public Address updateAddress(Address newAddress, int id){
-        return controller.updateAddress(newAddress, id);
+    public Optional<Address> save(Address address){
+        return Optional.of(repository.save(address));
     }
+
+    public void deleteById(Long id) {repository.deleteById(id);}
+
 }

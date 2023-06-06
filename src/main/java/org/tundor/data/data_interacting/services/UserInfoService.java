@@ -1,35 +1,34 @@
 package org.tundor.data.data_interacting.services;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.tundor.data.data_interacting.repositories.UserInfoRepository;
 import org.tundor.data.models.UserInfo;
-import org.tundor.data.data_interacting.repositories.UserInfoRep;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserInfoService {
-    private final UserInfoRep userInfoRep;
+    private final UserInfoRepository repository;
 
-    @Autowired
-    public UserInfoService(UserInfoRep userInfoRep) {
-        this.userInfoRep = userInfoRep;
+    public UserInfoService(UserInfoRepository repository) {
+        this.repository = repository;
     }
 
-    public List<UserInfo> getAllUsers() {
-        return userInfoRep.findAll();
+    public List<UserInfo> findAll() {
+        return repository.findAll();
     }
 
-    public UserInfo getUserById(Long id) {
-        return userInfoRep.findById(id).orElse(null);
+    public Optional<UserInfo> findById(Long id) {
+        return repository.findById(id);
     }
 
-    public UserInfo saveUser(UserInfo userDTO) {
-        return userInfoRep.save(userDTO);
+    public Optional<UserInfo> save(UserInfo user) {
+        return Optional.of(repository.save(user));
     }
 
-    public void deleteUser(Long id) {
-        userInfoRep.deleteById(id);
+    public void deleteById(Long id) {
+        repository.deleteById(id);
     }
 }

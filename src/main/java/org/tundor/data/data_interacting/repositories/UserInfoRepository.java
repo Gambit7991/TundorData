@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import org.tundor.data.models.UserInfo;
 
 @Repository
-public interface UserInfoRep extends JpaRepository<UserInfo, Long> {
+public interface UserInfoRepository extends JpaRepository<UserInfo, Long> {
 
 }

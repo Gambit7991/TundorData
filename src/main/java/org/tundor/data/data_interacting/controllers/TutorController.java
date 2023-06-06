@@ -1,39 +1,40 @@
 package org.tundor.data.data_interacting.controllers;
 
 import org.springframework.web.bind.annotation.*;
-import org.tundor.data.data_interacting.services.TutorService;
+import org.tundor.data.data_interacting.repositories.TutorRepository;
 import org.tundor.data.models.user_roles.Tutor;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/Tutor")
 public class TutorController {
-    private final TutorService tutorService;
+    private final TutorRepository repository;
 
-    public TutorController(TutorService tutorService) {
-        this.tutorService = tutorService;
+    public TutorController(TutorRepository repository) {
+        this.repository = repository;
     }
 
     @GetMapping
-    public List<Tutor> getAllUsers() {
-        return tutorService.getAllTutors();
+    public List<Tutor> findAll() {
+        return repository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Tutor findById(@PathVariable UUID id) {
-        return tutorService.getTutorById(id);
+    public Optional<Tutor> findById(@PathVariable UUID id) {
+        return repository.findById(id);
     }
 
     @PostMapping
     public Tutor save(@RequestBody Tutor tutor) {
-        return tutorService.saveUser(tutor);
+        return repository.save(tutor);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable UUID id) {
-        tutorService.deleteUser(id);
+    public void deleteByID(@PathVariable UUID id) {
+        repository.deleteById(id);
     }
 
 

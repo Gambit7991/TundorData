@@ -2,37 +2,54 @@ package org.tundor.data.data_interacting.controllers;
 
 
 import org.springframework.web.bind.annotation.*;
-import org.tundor.data.models.UserInfo;
 import org.tundor.data.data_interacting.services.UserInfoService;
+import org.tundor.data.models.UserInfo;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/UserInfoEntity")
 public class UserInfoController {
-    private final UserInfoService userInfoService;
+    private final UserInfoService service;
 
-    public UserInfoController(UserInfoService userInfoService) {
-        this.userInfoService = userInfoService;
+    public UserInfoController(UserInfoService service) {
+        this.service = service;
     }
 
     @GetMapping
     public List<UserInfo> getAllUserInfo() {
-        return userInfoService.getAllUsers();
+        return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public UserInfo getUserInfoById(@PathVariable Long id) {
-        return userInfoService.getUserById(id);
+    public Optional<UserInfo> findById(@PathVariable Long id) {
+        return service.findById(id);
     }
 
     @PostMapping
-    public UserInfo createUserInfo(@RequestBody UserInfo userInfo) {
-        return userInfoService.saveUser(userInfo);
+    public Optional<UserInfo> createUserInfo(@RequestBody UserInfo userInfo) {
+        return service.save(userInfo);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id) {
-        userInfoService.deleteUser(id);
+    public void deleteById(@PathVariable Long id) {
+        service.deleteById(id);
+    }
+
+    @PatchMapping("/id")
+    public Optional<UserInfo> updateUserInfo(@PathVariable Long id, @RequestBody  UserInfo newUserInfo){
+        return service.findById(id).map(userInfo->{
+           userInfo.setLoginInfo(newUserInfo.getLoginInfo());
+           userInfo.setBirthDay(newUserInfo.getBirthDay());
+           userInfo.setFirstName(newUserInfo.getFirstName());
+           userInfo.setLastName(newUserInfo.getLastName());
+           userInfo.setGender(newUserInfo.getGender());
+           userInfo.setPhoneNumber(newUserInfo.getPhoneNumber());
+           userInfo.setMainPicture(newUserInfo.getMainPicture());
+           userInfo.setAddress(newUserInfo.getAddress());
+           userInfo.setUserType(newUserInfo.getUserType());
+           return service.save(userInfo).orElse(null);
+        });
     }
 }

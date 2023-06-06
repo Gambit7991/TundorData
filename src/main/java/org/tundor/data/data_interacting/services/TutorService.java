@@ -12,7 +12,6 @@ public class TutorService {
 
     private final TutorRepository tutorRepository;
 
-//    @Autowired
     public TutorService(TutorRepository tutorRepository) {
         this.tutorRepository = tutorRepository;
     }
@@ -21,15 +20,15 @@ public class TutorService {
         return tutorRepository.findAll();
     }
 
-    public Tutor getTutorById(UUID id) {
+    public Tutor findById(UUID id) {
         return tutorRepository.findById(id).orElse(null);
     }
 
-    public Tutor saveUser(Tutor tutor) {
+    public Tutor save(Tutor tutor) {
         return tutorRepository.save(tutor);
     }
 
-    public void deleteUser(UUID id) {
+    public void delete(UUID id) {
         tutorRepository.deleteById(id);
     }
 }

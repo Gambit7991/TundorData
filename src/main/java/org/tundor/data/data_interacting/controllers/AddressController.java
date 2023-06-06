@@ -1,30 +1,39 @@
 package org.tundor.data.data_interacting.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.tundor.data.data_interacting.repositories.AddressRep;
+import org.springframework.web.bind.annotation.*;
+import org.tundor.data.data_interacting.services.AddressService;
 import org.tundor.data.models.account_info.address.Address;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/AddressEntity")
 public class AddressController {
-    private final AddressRep repository;
+    private final AddressService service;
 
-    public AddressController(AddressRep repository) {
-        this.repository = repository;
+    public AddressController(AddressService service) {
+        this.service = service;
     }
 
-    public Address addAddress(Address address) {
-        return repository.save(address);
+    @PostMapping
+    public Optional<Address> save(@RequestBody Address address) {
+        return service.save(address);
     }
 
-    public Address getAddressById(int id) {
-        return repository.findById(id).orElse(null);
+    @GetMapping("/{id}")
+    public Optional<Address> findById(@PathVariable Long id) {
+        return service.findById(id);
     }
 
-    public Address updateAddress(Address newAddress, int id) {
-        repository.findById(id).ifPresent(repository::delete);
-        return repository.save(newAddress);
+    @PatchMapping("/{id}")
+    public Optional<Address> updateAddress(@PathVariable Long id, @RequestBody Address newAddress) {
+        return service.findById(id)
+                .map(existingAddress -> {
+                    existingAddress.setStreet(newAddress.getStreet());
+                    existingAddress.setCity(newAddress.getCity());
+                    existingAddress.setPostalCode(newAddress.getPostalCode());
+                    return service.save(existingAddress).orElse(null);
+                });
     }
 
 }
