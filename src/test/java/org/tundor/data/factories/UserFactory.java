@@ -4,22 +4,12 @@ import org.joda.time.DateTime;
 import org.tundor.data.models.UserInfo;
 import org.tundor.data.models.account_info.LoginInfo;
 import org.tundor.data.models.account_info.address.Address;
-import org.tundor.data.models.user_roles.Tutor;
 import org.tundor.data.models.utils.Gender;
 import org.tundor.data.models.utils.UserType;
 
 import java.sql.Timestamp;
 
-public class UserFactory {
-
-
-    public Tutor createTutor() {
-        return Tutor.builder()
-                .students(4)
-                .userInfo(getUserInfo())
-                .build();
-    }
-
+abstract class UserFactory {
     public LoginInfo getLoginInfo() {
         return LoginInfo.builder()
                 .email("paul@gmail.com")
@@ -49,10 +39,12 @@ public class UserFactory {
                 .phoneNumber("any")
                 .mainPicture("any")
                 .address(getAddress())
+                .userType(setUserType())
                 .albumId(0)
                 .scheduleId(0)
                 .cardsId(0)
-                .userType(UserType.STUDENT)
                 .build();
     }
+
+    abstract UserType setUserType();
 }

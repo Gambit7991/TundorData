@@ -7,7 +7,7 @@ import org.tundor.data.models.UserInfo;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tutor", schema = "account")
+@Table(name = "tutor")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,9 +19,10 @@ public class Tutor {
     @Id
     @Column(name = "id")
     private UUID id;
-    @Basic
+
     @Column(name = "students")
     private Integer students;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_info_id")
     private UserInfo userInfo;

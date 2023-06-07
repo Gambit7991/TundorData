@@ -1,20 +1,20 @@
-package org.tundor.data.controllers;
+package org.tundor.data.flow;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 import org.tundor.data.data_interacting.controllers.TutorController;
 import org.tundor.data.models.user_roles.Tutor;
 
 import java.util.Optional;
 import java.util.UUID;
 
-
-public class TutorQueries {
+public class TutorFlow {
     private final TutorController controller;
-
-    public TutorQueries(TutorController controller) {
-        this.controller = controller;
+    public TutorFlow(ApplicationContext context) {
+        controller = context.getBean(TutorController.class);
     }
 
-    public TutorQueries save(Tutor tutor) {
+    public TutorFlow save(Tutor tutor) {
         controller.save(tutor);
         return this;
     }
@@ -23,8 +23,8 @@ public class TutorQueries {
         return controller.findById(id);
     }
 
-    public TutorQueries deleteTutor(Tutor tutor) {
-        controller.deleteByID(tutor.getId());
+    public TutorFlow deleteTutor(Tutor tutor) {
+        controller.deleteById(tutor.getId());
         return this;
     }
 }
