@@ -1,8 +1,8 @@
-package org.tundor.data.data_interacting.services;
+package org.tundor.data.data_interacting.services.info_services;
 
 
 import org.springframework.stereotype.Service;
-import org.tundor.data.data_interacting.repositories.UserInfoRepository;
+import org.tundor.data.data_interacting.repositories.info_repositories.UserInfoRepository;
 import org.tundor.data.models.UserInfo;
 
 import java.util.List;

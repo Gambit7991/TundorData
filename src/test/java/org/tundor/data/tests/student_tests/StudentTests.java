@@ -23,9 +23,8 @@ public class StudentTests extends StudentBase {
     void deleteTutorTest() {
         assertAll(
                 () -> assertTrue(flow.save(student).findById(student.getId()).isPresent()),
-                () -> assertNull(flow.deleteById(student).findById(student.getId()).orElse(null))
+                () -> assertNull(flow.deleteById(student.getId()).findById(student.getId()).orElse(null))
         );
     }
-
 
 }

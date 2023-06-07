@@ -23,7 +23,7 @@ public class TutorTests extends TutorBase {
     void deleteTutorTest() {
         assertAll(
                 () -> assertTrue(flow.save(tutor).findById(tutor.getId()).isPresent()),
-                () -> assertNull(flow.deleteTutor(tutor).findById(tutor.getId()).orElse(null))
+                () -> assertNull(flow.deleteById(tutor.getId()).findById(tutor.getId()).orElse(null))
         );
     }
 

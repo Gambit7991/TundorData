@@ -24,7 +24,7 @@ public class AdminTests extends AdminBase{
     void deleteTutorTest() {
         assertAll(
                 () -> assertTrue(flow.save(admin).findById(admin.getId()).isPresent()),
-                () -> assertNull(flow.deleteById(admin).findById(admin.getId()).orElse(null))
+                () -> assertNull(flow.deleteById(admin.getId()).findById(admin.getId()).orElse(null))
         );
     }
 

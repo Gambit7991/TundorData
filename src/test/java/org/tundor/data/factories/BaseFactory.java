@@ -9,7 +9,7 @@ import org.tundor.data.models.utils.UserType;
 
 import java.sql.Timestamp;
 
-abstract class UserFactory {
+public abstract class BaseFactory {
     public LoginInfo getLoginInfo() {
         return LoginInfo.builder()
                 .email("paul@gmail.com")
@@ -46,5 +46,5 @@ abstract class UserFactory {
                 .build();
     }
 
-    abstract UserType setUserType();
+    public abstract UserType setUserType();
 }
