@@ -6,5 +6,4 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "org.tundor.data.data_interacting.repositories")
 public class Runner {
-
 }

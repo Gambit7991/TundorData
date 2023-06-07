@@ -1,9 +1,11 @@
 package org.tundor.data.tests.tutor_tests;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.tundor.data.models.user_roles.Tutor;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 
 public class TutorTests extends TutorBase {
     private Tutor tutor;
@@ -23,7 +25,7 @@ public class TutorTests extends TutorBase {
     void deleteTutorTest() {
         assertAll(
                 () -> assertTrue(flow.save(tutor).findById(tutor.getId()).isPresent()),
-                () -> assertNull(flow.deleteTutor(tutor).findById(tutor.getId()).orElse(null))
+                () -> assertNull(flow.deleteById(tutor.getId()).findById(tutor.getId()).orElse(null))
         );
     }
 

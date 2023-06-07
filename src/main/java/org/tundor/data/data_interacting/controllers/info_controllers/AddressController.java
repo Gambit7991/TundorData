@@ -1,7 +1,7 @@
-package org.tundor.data.data_interacting.controllers;
+package org.tundor.data.data_interacting.controllers.info_controllers;
 
 import org.springframework.web.bind.annotation.*;
-import org.tundor.data.data_interacting.services.AddressService;
+import org.tundor.data.data_interacting.services.info_services.AddressService;
 import org.tundor.data.models.account_info.address.Address;
 
 import java.util.Optional;

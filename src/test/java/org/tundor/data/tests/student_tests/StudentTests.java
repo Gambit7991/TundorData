@@ -1,9 +1,13 @@
 package org.tundor.data.tests.student_tests;
 
 import org.junit.jupiter.api.*;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.tundor.data.models.user_roles.Student;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 
 public class StudentTests extends StudentBase {
     private Student student;
@@ -23,9 +27,8 @@ public class StudentTests extends StudentBase {
     void deleteTutorTest() {
         assertAll(
                 () -> assertTrue(flow.save(student).findById(student.getId()).isPresent()),
-                () -> assertNull(flow.deleteById(student).findById(student.getId()).orElse(null))
+                () -> assertNull(flow.deleteById(student.getId()).findById(student.getId()).orElse(null))
         );
     }
-
 
 }

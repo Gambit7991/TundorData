@@ -1,9 +1,10 @@
-package org.tundor.data.factories;
+package org.tundor.data.factories.user_factories;
 
+import org.tundor.data.factories.BaseFactory;
 import org.tundor.data.models.user_roles.Tutor;
 import org.tundor.data.models.utils.UserType;
 
-public class TutorFactory extends UserFactory{
+public class TutorFactory extends BaseFactory {
 
     @Override
     public UserType setUserType() {
@@ -11,9 +12,7 @@ public class TutorFactory extends UserFactory{
     }
 
     public Tutor createTutor() {
-        return Tutor.builder()
-                .students(4)
-                .userInfo(getUserInfo())
-                .build();
+        return new Tutor(getUserInfo(), 4);
+
     }
 }
