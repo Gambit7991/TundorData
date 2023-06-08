@@ -121,8 +121,8 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <includes>
-                        <include>**/TutorTests.java</include>
-                        <include>**/StudentTests.java</include>
+                        <include>**/*Tests.java</include>
+<!--                        <include>**/StudentTests.java</include>-->
                     </includes>
                 </configuration>
             </plugin>

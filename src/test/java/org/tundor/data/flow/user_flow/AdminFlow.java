@@ -9,8 +9,9 @@ import java.util.UUID;
 
 public class AdminFlow extends BaseFlow<Admin, UUID> {
 
-    public AdminFlow(ApplicationContext context){
+    public AdminFlow(ApplicationContext context) {
         super(AdminController.class, context);
     }
+
 
 }
