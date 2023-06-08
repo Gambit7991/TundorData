@@ -122,7 +122,6 @@
                 <configuration>
                     <includes>
                         <include>**/*Tests.java</include>
-<!--                        <include>**/StudentTests.java</include>-->
                     </includes>
                 </configuration>
             </plugin>

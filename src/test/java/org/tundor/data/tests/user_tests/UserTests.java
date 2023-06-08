@@ -1,10 +1,10 @@
-package org.tundor.data.tests;
+package org.tundor.data.tests.user_tests;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
-import org.tundor.data.BaseTest;
+import org.tundor.data.tests.BaseTest;
 import org.tundor.data.flow.BaseFlow;
 import org.tundor.data.models.BaseUser;
 
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Execution(ExecutionMode.CONCURRENT)
-public abstract class CommonTests <UserType extends BaseUser> extends BaseTest {
+public abstract class UserTests<UserType extends BaseUser> extends BaseTest {
     private UserType user;
     @BeforeEach
     public void setup() {

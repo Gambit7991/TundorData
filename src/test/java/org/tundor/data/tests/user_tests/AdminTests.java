@@ -5,11 +5,10 @@ import org.tundor.data.factories.user_factories.AdminFactory;
 import org.tundor.data.flow.BaseFlow;
 import org.tundor.data.flow.user_flow.AdminFlow;
 import org.tundor.data.models.user_roles.Admin;
-import org.tundor.data.tests.CommonTests;
 
 import java.util.UUID;
 
-public class AdminTests extends CommonTests<Admin> {
+public class AdminTests extends UserTests<Admin> {
 
     private static AdminFactory factory;
     private static AdminFlow flow;

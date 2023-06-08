@@ -5,11 +5,10 @@ import org.tundor.data.factories.user_factories.TutorFactory;
 import org.tundor.data.flow.BaseFlow;
 import org.tundor.data.flow.user_flow.TutorFlow;
 import org.tundor.data.models.user_roles.Tutor;
-import org.tundor.data.tests.CommonTests;
 
 import java.util.UUID;
 
-public class TutorTests extends CommonTests<Tutor> {
+public class TutorTests extends UserTests<Tutor> {
     public static TutorFactory factory;
     public static TutorFlow flow;
 
