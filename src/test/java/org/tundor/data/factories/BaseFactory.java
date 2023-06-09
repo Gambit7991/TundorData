@@ -21,7 +21,7 @@ public abstract class BaseFactory {
                 .build();
     }
 
-    protected Address getAddress() {
+    protected Address getFirstAddress() {
         return Address.builder()
                 .aptNum(123)
                 .buildingNumber(30)
@@ -31,6 +31,18 @@ public abstract class BaseFactory {
                 .postalCode(30009)
                 .build();
     }
+
+    public Address getSecondAddress() {
+        return Address.builder()
+                .city("Philly")
+                .countryId(48)
+                .aptNum(2)
+                .postalCode(19136)
+                .buildingNumber(4544)
+                .street("carwithan")
+                .build();
+    }
+
 
     protected UserInfo getUserInfo() {
         return UserInfo.builder()
@@ -42,7 +54,7 @@ public abstract class BaseFactory {
                 .gender(Gender.MAN)
                 .phoneNumber("any")
                 .mainPicture("any")
-                .address(getAddress())
+                .address(getFirstAddress())
                 .userType(userType())
                 .albumId(0)
                 .scheduleId(0)

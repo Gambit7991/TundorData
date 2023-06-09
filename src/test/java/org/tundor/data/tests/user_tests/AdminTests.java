@@ -1,6 +1,7 @@
 package org.tundor.data.tests.user_tests;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.tundor.data.factories.BaseFactory;
 import org.tundor.data.factories.user_factories.AdminFactory;
 import org.tundor.data.flow.BaseFlow;
 import org.tundor.data.flow.user_flow.AdminFlow;
@@ -14,7 +15,7 @@ public class AdminTests extends UserTests<Admin> {
     private static AdminFlow flow;
 
     @BeforeAll
-    public static void PreSetup(){
+    public static void PreSetup() {
         factory = new AdminFactory();
         flow = new AdminFlow(context);
     }
@@ -25,7 +26,12 @@ public class AdminTests extends UserTests<Admin> {
     }
 
     @Override
-    public BaseFlow<Admin, UUID> getFlow() {
+    public BaseFlow<Admin, UUID> flow() {
         return flow;
+    }
+
+    @Override
+    protected BaseFactory factory() {
+        return factory;
     }
 }

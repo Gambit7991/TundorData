@@ -1,6 +1,7 @@
 package org.tundor.data.tests.user_tests;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.tundor.data.factories.BaseFactory;
 import org.tundor.data.factories.user_factories.StudentFactory;
 import org.tundor.data.flow.BaseFlow;
 import org.tundor.data.flow.user_flow.StudentFlow;
@@ -18,11 +19,18 @@ public class StudentTests extends UserTests<Student> {
         flow = new StudentFlow(context);
     }
 
+    @Override
     public Student createUser() {
         return factory.generateStudent();
     }
 
-    public BaseFlow<Student, UUID> getFlow() {
+    @Override
+    public BaseFlow<Student, UUID> flow() {
         return flow;
+    }
+
+    @Override
+    protected BaseFactory factory() {
+        return factory;
     }
 }

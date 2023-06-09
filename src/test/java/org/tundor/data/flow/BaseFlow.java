@@ -26,4 +26,9 @@ public abstract class BaseFlow<T extends BaseUser, UUID> {
         return this;
     }
 
+    public BaseFlow<T, UUID> updateById(UUID id, T user){
+        controller.update(id, user);
+        return this;
+    }
+
 }
