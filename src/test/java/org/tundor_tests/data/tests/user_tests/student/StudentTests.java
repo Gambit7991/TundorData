@@ -41,6 +41,11 @@ public class StudentTests extends UserTests<StudentDTO> {
         return factory;
     }
 
+    @Override
+    protected String getClassType() {
+        return Student.class.getTypeName();
+    }
+
     @Test
     public void userToDomain(){
         Student student = StudentMapper.INSTANCE.toDomain(getUser());

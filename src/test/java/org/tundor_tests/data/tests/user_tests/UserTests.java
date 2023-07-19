@@ -10,25 +10,36 @@ import org.tundor_tests.data.tests.BaseTest;
 
 import java.util.UUID;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public abstract class UserTests<User extends BaseUserDTO> extends BaseTest {
 
-    private User user;
+    public User user;
 
     @BeforeEach
     public void setup(){
         user = getUser();
     }
 
-
     protected abstract User getUser();
     protected abstract BaseFlow<User, UUID> getFlow();
     protected abstract BaseFactoryDTO getFactory();
+    protected abstract String getClassType();
+
 
 
     @Test
-    public void createUser(){
+    public void createUserTest(){
         getFlow().save(user);
+        System.out.println(user.getId());
         Assertions.assertEquals(user, getFlow().findById(user.getId()).orElse(null));
+    }
+
+    @Test
+    public void toDomainTest() {
+        getFlow().save(user);
+        assertEquals(getFlow().findByIdDomainModule(user.getId()).isPresent() ?
+                getFlow().findByIdDomainModule(user.getId()).get().getClass().getTypeName() : null, getClassType());
     }
 
 }

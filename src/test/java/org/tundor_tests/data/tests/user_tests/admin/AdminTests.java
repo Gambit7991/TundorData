@@ -41,6 +41,12 @@ public class AdminTests extends UserTests<AdminDTO> {
         return factory;
     }
 
+    @Override
+    protected String getClassType() {
+        return Admin.class.getTypeName();
+    }
+
+
     @Test
     public void userToDomain(){
         Admin admin = AdminMapper.INSTANCE.toDomain(getUser());

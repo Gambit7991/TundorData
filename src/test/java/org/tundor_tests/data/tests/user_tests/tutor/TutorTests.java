@@ -1,7 +1,6 @@
 package org.tundor_tests.data.tests.user_tests.tutor;
 
 import org.domain.models.userRoles.Tutor;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +14,8 @@ import org.tundor_tests.data.flow.user_flow.TutorFlow;
 import org.tundor_tests.data.tests.user_tests.UserTests;
 
 import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 @Transactional
@@ -44,9 +45,16 @@ public class TutorTests extends UserTests<TutorDTO> {
         return factory;
     }
 
-    @Test
-    public void userToDomain(){
-        Tutor tutor = TutorMapper.INSTANCE.toDomain(getUser());
-        Assertions.assertNotNull(tutor);
+    @Override
+    protected String getClassType() {
+        return Tutor.class.getTypeName();
     }
+
+    @Test
+    public void userToDomain() {
+        Tutor tutor = TutorMapper.INSTANCE.toDomain(getUser());
+        assertNotNull(tutor);
+    }
+
+
 }
