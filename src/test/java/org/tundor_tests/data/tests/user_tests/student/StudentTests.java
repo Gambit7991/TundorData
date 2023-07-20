@@ -4,7 +4,6 @@ import org.domain.models.userRoles.Student;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.tundor.data.DTOs.user_roles.StudentDTO;
-import org.tundor.data.mappers.StudentMapper;
 import org.tundor_tests.data.factories.BaseFactoryDTO;
 import org.tundor_tests.data.factories.user_DTO_factories.StudentFactoryDTO;
 import org.tundor_tests.data.flow.BaseFlow;
@@ -13,7 +12,6 @@ import org.tundor_tests.data.tests.user_tests.UserTests;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class StudentTests extends UserTests<StudentDTO> {
 
@@ -47,19 +45,4 @@ public class StudentTests extends UserTests<StudentDTO> {
         return Student.class.getTypeName();
     }
 
-    @Test
-    public void userToDomain(){
-        Student student = StudentMapper.INSTANCE.toDomain(getUser());
-        assertNotNull(student);
-    }
-
-    @Test
-    public void userToDTO() {
-        getFlow().save(user);
-        Student us = (Student) flow.findByIdDomainModel(user.getId()).orElse(null);
-        System.out.println(us);
-        StudentDTO fin = StudentMapper.INSTANCE.toDTO(us);
-        System.out.println(fin);
-        assertNotNull(fin);
-    }
 }

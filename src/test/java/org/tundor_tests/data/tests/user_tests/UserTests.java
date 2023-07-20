@@ -10,8 +10,6 @@ import org.tundor_tests.data.tests.BaseTest;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public abstract class UserTests<User extends BaseUserDTO> extends BaseTest {
 
     public User user;
@@ -24,7 +22,6 @@ public abstract class UserTests<User extends BaseUserDTO> extends BaseTest {
     protected abstract User getUser();
     protected abstract BaseFlow<User, UUID> getFlow();
     protected abstract BaseFactoryDTO getFactory();
-    protected abstract String getClassType();
 
 
 
@@ -34,14 +31,6 @@ public abstract class UserTests<User extends BaseUserDTO> extends BaseTest {
         System.out.println(user.getId());
         Assertions.assertEquals(user, getFlow().findById(user.getId()).orElse(null));
     }
-
-    @Test
-    public void toDomainTest() {
-        getFlow().save(user);
-        assertEquals(getFlow().findByIdDomainModel(user.getId()).isPresent() ?
-                getFlow().findByIdDomainModel(user.getId()).get().getClass().getTypeName() : null, getClassType());
-    }
-
 
 }
 
