@@ -14,5 +14,5 @@ public interface AdminMapper {
     Admin toDomain(AdminDTO admin);
 
     @Mapping(source = "info", target = "info")
-    AdminDTO toDto(Admin admin);
+    AdminDTO toDTO(Admin admin);
 }

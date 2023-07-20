@@ -14,5 +14,5 @@ public interface StudentMapper {
     Student toDomain(StudentDTO studentDTO);
 
     @Mapping(source = "info", target = "info")
-    StudentDTO toDTO(Student student);
+    StudentDTO getDTO(Student student);
 }

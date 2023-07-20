@@ -12,4 +12,7 @@ public interface AdminRepository extends BaseRepository<AdminDTO> {
     default Admin getDomainModel(AdminDTO dto){
         return AdminMapper.INSTANCE.toDomain(dto);
     }
+    default AdminDTO getDTO(Admin admin){
+        return AdminMapper.INSTANCE.toDTO(admin);
+    }
 }

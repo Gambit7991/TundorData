@@ -12,4 +12,7 @@ public interface StudentRepository extends BaseRepository<StudentDTO> {
     default Student getDomainModel(StudentDTO dto){
         return StudentMapper.INSTANCE.toDomain(dto);
     }
+    default StudentDTO getDTO(Student student){
+        return StudentMapper.INSTANCE.getDTO(student);
+    }
 }
