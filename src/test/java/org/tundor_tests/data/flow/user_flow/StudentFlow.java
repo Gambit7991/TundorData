@@ -15,7 +15,7 @@ public class StudentFlow extends BaseFlow<StudentDTO, UUID> {
         super(StudentRepository.class, context);
     }
 
-    public Optional<Account> findByIdDomainModule(UUID id) {
+    public Optional<Account> findByIdDomainModel(UUID id) {
         return Optional.of(repository.getDomainModel(repository.findById(id).orElse(null)));
     }
 }

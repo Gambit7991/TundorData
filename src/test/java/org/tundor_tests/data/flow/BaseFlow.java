@@ -29,7 +29,7 @@ public abstract class BaseFlow<T extends BaseUserDTO, ID> {
         return this;
     }
 
-    public abstract Optional<Account> findByIdDomainModule(UUID id);
+    public abstract Optional<Account> findByIdDomainModel(UUID id);
 
 //    public BaseFlow<T, UUID> updateById(UUID id, T user){
 //        repository.update(id, user);

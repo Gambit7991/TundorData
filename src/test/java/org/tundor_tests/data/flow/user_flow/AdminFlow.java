@@ -15,7 +15,7 @@ public class AdminFlow extends BaseFlow<AdminDTO, UUID> {
         super(AdminRepository.class, context);
     }
 
-    public Optional<Account> findByIdDomainModule(UUID id) {
+    public Optional<Account> findByIdDomainModel(UUID id) {
         return Optional.of(repository.getDomainModel(repository.findById(id).orElse(null)));
     }
 

@@ -14,7 +14,7 @@ public class TutorFlow extends BaseFlow<TutorDTO, UUID> {
         super(TutorRepository.class, context);
     }
 
-    public Optional<Account> findByIdDomainModule(UUID id) {
+    public Optional<Account> findByIdDomainModel(UUID id) {
         return Optional.of(repository.getDomainModel(repository.findById(id).orElse(null)));
     }
 

@@ -14,6 +14,8 @@ import org.tundor_tests.data.tests.user_tests.UserTests;
 
 import java.util.UUID;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 public class AdminTests extends UserTests<AdminDTO> {
 
     public static AdminFactoryDTO factory;
@@ -51,5 +53,17 @@ public class AdminTests extends UserTests<AdminDTO> {
     public void userToDomain(){
         Admin admin = AdminMapper.INSTANCE.toDomain(getUser());
         Assertions.assertNotNull(admin);
+    }
+
+    @Test
+    public void userToDTO() {
+        getFlow().save(user);
+        Admin us = (Admin) flow.findByIdDomainModel(user.getId()).orElse(null);
+        System.out.println(us);
+//        TutorDTO tutorDTO = TutorDTO.builder().build();
+//        AdminDTO adminDTO = AdminDTO
+        AdminDTO fin = AdminMapper.INSTANCE.toDTO(us);
+        System.out.println(fin);
+        assertNotNull(fin);
     }
 }

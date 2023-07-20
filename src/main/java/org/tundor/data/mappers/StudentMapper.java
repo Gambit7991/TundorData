@@ -6,13 +6,15 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import org.tundor.data.DTOs.user_roles.StudentDTO;
 
-@Mapper(uses = InfoMapper.class)
+@Mapper
 public interface StudentMapper {
-
     StudentMapper INSTANCE = Mappers.getMapper(StudentMapper.class);
-    @Mapping(source = "info", target = "info")
-    Student toDomain(StudentDTO studentDTO);
 
     @Mapping(source = "info", target = "info")
-    StudentDTO getDTO(Student student);
+    Student toDomain(StudentDTO student);
+
+    @Mapping(source = "info", target = "info")
+    StudentDTO toDTO(Student student);
+
+
 }

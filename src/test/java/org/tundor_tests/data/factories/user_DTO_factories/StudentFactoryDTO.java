@@ -6,10 +6,11 @@ import org.tundor_tests.data.factories.BaseFactoryDTO;
 public class StudentFactoryDTO extends BaseFactoryDTO {
 
     public StudentDTO generateUser() {
-        return StudentDTO.builder()
-                .tutors(4)
-                .info(getUserInfo())
-                .build();
+        return new StudentDTO(getUserInfo(), 4);
+                //StudentDTO.builder()
+//                .tutors(4)
+//                .info(getUserInfo())
+//                .build();
     }
 
 }

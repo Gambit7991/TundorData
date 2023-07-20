@@ -10,10 +10,10 @@ import org.tundor.data.DTOs.user_roles.TutorDTO;
 public interface TutorMapper {
     TutorMapper INSTANCE = Mappers.getMapper(TutorMapper.class);
 
-    @Mapping(source = "info", target = "info")
+    @Mapping(target = "info", source = "info")
     Tutor toDomain(TutorDTO tutor);
 
-    @Mapping(source = "info", target = "info")
+    @Mapping(target = "info", source = "info")
     TutorDTO toDTO(Tutor tutor);
 
 }

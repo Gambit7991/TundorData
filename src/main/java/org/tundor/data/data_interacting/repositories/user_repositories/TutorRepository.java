@@ -12,7 +12,7 @@ public interface TutorRepository extends BaseRepository<TutorDTO> {
     default Tutor getDomainModel(TutorDTO dto){
         return TutorMapper.INSTANCE.toDomain(dto);
     }
-    default TutorDTO getDTO(Tutor tutor){
+    default TutorDTO toDTO(Tutor tutor){
         return TutorMapper.INSTANCE.toDTO(tutor);
     }
 

@@ -56,5 +56,16 @@ public class TutorTests extends UserTests<TutorDTO> {
         assertNotNull(tutor);
     }
 
+    @Test
+    public void userToDTO() {
+        getFlow().save(user);
+        Tutor us = (Tutor) flow.findByIdDomainModel(user.getId()).orElse(null);
+        System.out.println(us);
+
+        TutorDTO fin = TutorMapper.INSTANCE.toDTO(us);
+        System.out.println(fin);
+        assertNotNull(fin);
+    }
+
 
 }

@@ -38,8 +38,10 @@ public abstract class UserTests<User extends BaseUserDTO> extends BaseTest {
     @Test
     public void toDomainTest() {
         getFlow().save(user);
-        assertEquals(getFlow().findByIdDomainModule(user.getId()).isPresent() ?
-                getFlow().findByIdDomainModule(user.getId()).get().getClass().getTypeName() : null, getClassType());
+        assertEquals(getFlow().findByIdDomainModel(user.getId()).isPresent() ?
+                getFlow().findByIdDomainModel(user.getId()).get().getClass().getTypeName() : null, getClassType());
     }
 
+
 }
+

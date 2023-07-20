@@ -10,10 +10,12 @@ import org.tundor.data.DTOs.UserInfoDTO;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
+@ToString(callSuper = true, includeFieldNames = false)
 public class TutorDTO extends BaseUserDTO {
 
+    @Basic
     @Column(name = "students")
     private Integer students;
 
@@ -22,8 +24,7 @@ public class TutorDTO extends BaseUserDTO {
     private UserInfoDTO info;
 
     public TutorDTO(UserInfoDTO info, Integer students) {
-        this.info=info;
+        this.info = info;
         this.students = students;
-
     }
 }

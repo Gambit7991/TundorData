@@ -6,14 +6,14 @@ import org.tundor.data.DTOs.BaseUserDTO;
 import org.tundor.data.DTOs.UserInfoDTO;
 
 
+@Entity
+@Table(name = "students")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "students", schema = "account")
-@ToString(includeFieldNames = false)
+@ToString(callSuper = true, includeFieldNames = false)
 public class StudentDTO extends BaseUserDTO {
 
     @Basic
@@ -24,7 +24,6 @@ public class StudentDTO extends BaseUserDTO {
     @JoinColumn(name = "fk_student_info")
     private UserInfoDTO info;
 
-    @Builder
     public StudentDTO(UserInfoDTO info, Integer tutors) {
         this.info=info;
         this.tutors = tutors;

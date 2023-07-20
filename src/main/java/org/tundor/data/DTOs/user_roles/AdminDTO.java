@@ -11,7 +11,7 @@ import org.tundor.data.DTOs.UserInfoDTO;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
+@ToString(callSuper = true, includeFieldNames = false)
 public class AdminDTO extends BaseUserDTO {
 
     @OneToOne(cascade = CascadeType.ALL)
