@@ -1,8 +1,6 @@
 package org.tundor_tests.data.tests.user_tests.student;
 
-import org.domain.models.userRoles.Student;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.tundor.data.DTOs.user_roles.StudentDTO;
 import org.tundor_tests.data.factories.BaseFactoryDTO;
 import org.tundor_tests.data.factories.user_DTO_factories.StudentFactoryDTO;
@@ -38,11 +36,6 @@ public class StudentTests extends UserTests<StudentDTO> {
     @Override
     protected BaseFactoryDTO getFactory() {
         return factory;
-    }
-
-    @Override
-    protected String getClassType() {
-        return Student.class.getTypeName();
     }
 
 }
