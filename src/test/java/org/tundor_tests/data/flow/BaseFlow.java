@@ -1,6 +1,5 @@
 package org.tundor_tests.data.flow;
 
-import org.domain.models.Account;
 import org.springframework.context.ApplicationContext;
 import org.tundor.data.DTOs.BaseUserDTO;
 import org.tundor.data.data_interacting.repositories.BaseRepository;
@@ -28,12 +27,5 @@ public abstract class BaseFlow<T extends BaseUserDTO, ID> {
         repository.deleteById(id);
         return this;
     }
-
-    public abstract Optional<Account> findByIdDomainModel(UUID id);
-
-//    public BaseFlow<T, UUID> updateById(UUID id, T user){
-//        repository.update(id, user);
-//        return this;
-//    }
 
 }
