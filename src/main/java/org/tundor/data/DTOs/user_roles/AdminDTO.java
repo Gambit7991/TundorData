@@ -21,5 +21,8 @@ public class AdminDTO extends BaseUserDTO {
         this.info = info;
     }
 
-
+    @Override
+    public void setInfo(UserInfoDTO info){
+        this.info = info;
+    }
 }

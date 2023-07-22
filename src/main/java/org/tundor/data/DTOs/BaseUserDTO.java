@@ -21,5 +21,6 @@ public abstract class BaseUserDTO {
     private UUID id;
 
     public abstract UserInfoDTO getInfo();
+    public abstract void setInfo(UserInfoDTO info);
 
 }
