@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EntityScan(basePackages = "org.tundor.data.DTOs")
+@EntityScan(basePackages = "org.tundor.data.forms")
 @EnableJpaRepositories(basePackages = "org.tundor.data.data_interacting.repositories")
 public class Runner {
 
