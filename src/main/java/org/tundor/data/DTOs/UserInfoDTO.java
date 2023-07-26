@@ -21,7 +21,7 @@ import java.util.UUID;
 @Builder
 @ToString(includeFieldNames = false)
 public class UserInfoDTO {
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "id")
     private UUID id;
